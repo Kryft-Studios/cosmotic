@@ -1,6 +1,6 @@
 {
   "name": "cosmotic",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "",
   "type": "module",
   "main": "./dist/index.js",
@@ -8,7 +8,6 @@
   "files": [
     "dist"
   ],
-  
   "author": {
     "name": "Kryft-Studios",
     "email": "AfriaStudios@outlook.on"
@@ -25,7 +24,7 @@
   },
   "devDependencies": {
     "@kryft/naming-convention": "^1.4.0",
-    "@kryft/release-wizard": "^1.0.0",
+    "@kryft/release-wizard": "^1.2.2",
     "eslint": "^10.9.1",
     "typedoc": "^0.28.20",
     "typedoc-material-theme": "^1.4.1",

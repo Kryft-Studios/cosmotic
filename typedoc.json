@@ -1,5 +1,5 @@
 {
-  "plugins": [
+  "plugin": [
     "typedoc-material-theme"
   ],
   "theme": "default",

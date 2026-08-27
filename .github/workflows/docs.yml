@@ -3,7 +3,10 @@ name: Build docs with TypeDoc
 on:
   push:
   pull_request:
-
+permissions:
+  pages: write
+  id-token: write
+  contents: read
 jobs:
   docs:
     uses: Kryft-Studios/workflows/.github/workflows/docs.yml@main

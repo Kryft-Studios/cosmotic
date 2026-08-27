@@ -1,0 +1,9 @@
+name: Build docs with TypeDoc
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  docs:
+    uses: Kryft-Studios/workflows/.github/workflows/typedoc.yml@main

@@ -1,0 +1,33 @@
+{
+  "name": "cosmotic",
+  "version": "0.0.0",
+  "description": "",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "author": {
+    "name": "Kryft-Studios",
+    "email": "AfriaStudios@outlook.on"
+  },
+  "license": "Apache-2.0",
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint .",
+    "docs": "typedoc",
+    "release": "krw"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@kryft/naming-convention": "^1.4.0",
+    "@kryft/release-wizard": "^1.0.0",
+    "eslint": "^10.9.1",
+    "typedoc": "^0.28.20",
+    "typedoc-material-theme": "^1.4.1",
+    "typescript": "6.0.3"
+  }
+}

@@ -1,0 +1,23 @@
+name: Release Package
+
+on:
+  workflow_dispatch:
+    inputs:
+      bump:
+        description: "Version Bump"
+        required: true
+        type: choice
+        options:
+          - major
+          - minor
+          - patch
+        default: patch
+
+jobs:
+  release:
+    uses: Kryft-Studios/workflows/.github/workflows/releases.yml@main
+    with:
+      buildin: "."
+      tobuild: "pnpm build"
+      distdir: "./dist"
+      bump: ${{ inputs.bump }}

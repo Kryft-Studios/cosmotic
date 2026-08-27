@@ -6,4 +6,4 @@ on:
 
 jobs:
   docs:
-    uses: Kryft-Studios/workflows/.github/workflows/typedoc.yml@main
+    uses: Kryft-Studios/workflows/.github/workflows/docs.yml@main

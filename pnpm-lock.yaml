@@ -12,8 +12,8 @@ importers:
         specifier: ^1.4.0
         version: 1.4.0
       '@kryft/release-wizard':
-        specifier: ^1.2.2
-        version: 1.2.2
+        specifier: ^1.2.3
+        version: 1.2.3
       eslint:
         specifier: ^10.9.1
         version: 10.9.1
@@ -85,8 +85,8 @@ packages:
   '@kryft/naming-convention@1.4.0':
     resolution: {integrity: sha512-AEtFTZSbvuYamsASkAXclDBryTZb1b9JM6RCIjDujF84WQM/T9u8GdJw1dXeqt0j6QeqTlw+bza9LXC2yA3Liw==}
 
-  '@kryft/release-wizard@1.2.2':
-    resolution: {integrity: sha512-FEADC6r50M7QgPepgCY3gHUlX254OXXtvLb4cb0zN3DSk7tzxqjK/6ROsF8ahXgUnkcZgi0Kgkjw0B4bLGvuGw==}
+  '@kryft/release-wizard@1.2.3':
+    resolution: {integrity: sha512-/GDlwu28e1lnFc9OwKc9ZwosrDYi0IvjL+Q5HKhN7/8pdM9BhC9hYznFZUS5IwdlpFPaYCpFd4qs4j2iUTk0QA==}
     hasBin: true
 
   '@material/material-color-utilities@0.3.0':
@@ -526,7 +526,7 @@ snapshots:
       - jiti
       - supports-color
 
-  '@kryft/release-wizard@1.2.2': {}
+  '@kryft/release-wizard@1.2.3': {}
 
   '@material/material-color-utilities@0.3.0': {}
 

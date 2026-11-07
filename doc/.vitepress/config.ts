@@ -156,7 +156,8 @@ export default /*withPwa*/(defineConfig({
     "Cosmotic is an easy-to-use and easy-to-adapt WebGPU abstraction. It aims to give you full control over your WebGPU device while providing high-level abstractions.",
 
   outDir: "../docs",
-head: [{rel: "icon", "type": "image/png","href": "/cosmotic-logo.png"},
+head: [
+  [ "link", {rel: "icon", "type": "image/png","href": "/cosmotic-logo.png"}],
   ['meta', {
       property: 'og:type',
       content: 'website',

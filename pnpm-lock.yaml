@@ -11,6 +11,9 @@ importers:
       '@cosmos-js/core':
         specifier: ^0.1.15
         version: 0.1.15
+      '@cosmos-js/wgpu-texture-registry':
+        specifier: ^0.1.1
+        version: 0.1.1
       wgpu-matrix:
         specifier: ^3.4.2
         version: 3.4.2

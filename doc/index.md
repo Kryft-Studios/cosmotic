@@ -4,18 +4,20 @@ layout: home
 
 hero:
   name: "Cosmotic API"
-  text: "Cosmotic is a easy to use and easy to adapt webgpu abstraction. It aims full control over your webgpu device while confirming high level abstractions"
-  tagline: My great project tagline
+  text: "An easy-to-use and easy-to-adapt WebGPU abstraction"
+  tagline: Modularity is first priority
   actions:
     - theme: alt
       text: API Reference
-      link: /api
-
+      link: /api/README.md
+image:
+  src: /cosmotic-banner.png
+  alt: Cosmotic's official banner
 features:
   - title: Direct & Indirect
     details: Low-Level & High-Level - both at the same time
   - title: Modular
-    details: Easy, modular api.
+    details: Easy, modular api. Got an low level app? we handle it for you. No abstractions needed for that!
 
 ---
 

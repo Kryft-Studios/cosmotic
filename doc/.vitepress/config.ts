@@ -29,6 +29,7 @@ const a = new Set([
   "variables",
   "functions",
   "constants",
+  "interfaces", "enumerations"
 ]);
 
 function generateSidebar(dir: string, base = "", topLevel = true) {
@@ -173,8 +174,9 @@ export default /*withPwa*/(defineConfig({
     "Cosmotic is an easy-to-use and easy-to-adapt WebGPU abstraction. It aims to give you full control over your WebGPU device while providing high-level abstractions.",
 
   outDir: "../docs",
-
-  themeConfig: {
+head: [{rel: "icon", "type": "image/png", "/cosmotic-logo.png"}],  themeConfig: {
+    siteTitle: "Cosmotic",
+    logo: "/cosmotic-logo.png",
     lastUpdated: {
       text: "Last modified",
       formatOptions: {

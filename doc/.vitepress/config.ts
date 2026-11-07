@@ -101,11 +101,11 @@ export default /*withPwa*/(defineConfig({
         title: "Cosmotic API",
         injectLLMHint: true,
       }),
-      
+
       GitChangelog({
         repoURL: () => "https://github.com/Kryft-Studios/cosmotic",
       }),
-    
+
       GitChangelogMarkdownSection(),
 
     ],
@@ -118,7 +118,7 @@ export default /*withPwa*/(defineConfig({
           "@nolebase/ui",
         ],
       },
-    
+
       ssr: {
         noExternal: [
           "@nolebase/vitepress-plugin-breadcrumbs",
@@ -144,25 +144,7 @@ export default /*withPwa*/(defineConfig({
       display: "standalone",
       theme_color: "#ff7a00",
       background_color: "#111111",
-      icons: [
-        /** 
-        {
-          src: "/cosmotic/pwa-192x192.png",
-          sizes: "192x192",
-          type: "image/png",
-        },
-        {
-          src: "/cosmotic/pwa-512x512.png",
-          sizes: "512x512",
-          type: "image/png",
-        },
-        {
-          src: "/cosmotic/pwa-512x512.png",
-          sizes: "512x512",
-          type: "image/png",
-          purpose: "any maskable",
-        }, customise once u add icons **/ 
-      ],
+
     },
   },
 
@@ -174,7 +156,57 @@ export default /*withPwa*/(defineConfig({
     "Cosmotic is an easy-to-use and easy-to-adapt WebGPU abstraction. It aims to give you full control over your WebGPU device while providing high-level abstractions.",
 
   outDir: "../docs",
-head: [{rel: "icon", "type": "image/png", "/cosmotic-logo.png"}],  themeConfig: {
+head: [{rel: "icon", "type": "image/png", "/cosmotic-logo.png"},
+  ['meta', {
+      property: 'og:type',
+      content: 'website',
+    }],
+    ['meta', {
+      property: 'og:site_name',
+      content: 'Cosmotic',
+    }],
+    ['meta', {
+      property: 'og:title',
+      content: 'Cosmotic | Modularity is Priority',
+    }],
+    ['meta', {
+      property: 'og:description',
+      content: 'A high and low level graphics API. Experience modularity in 3D graphics programming.',
+    }],
+    ['meta', {
+      property: 'og:url',
+      content: 'https://kryft-studios.github.io/cosmotic/',
+    }],
+    ['meta', {
+      property: 'og:image',
+      content: 'https://kryft-studios.github.io/cosmotic/cosmotic-banner.png',
+    }],
+    ['meta', {
+      property: 'og:image:width',
+      content: '1200',
+    }],
+    ['meta', {
+      property: 'og:image:height',
+      content: '630',
+    }],
+
+    // Twitter / X
+    ['meta', {
+      name: 'twitter:card',
+      content: 'summary_large_image',
+    }],
+    ['meta', {
+      name: 'twitter:title',
+      content: 'Cosmotic | Modularity is Priority',
+    }],
+    ['meta', {
+      name: 'twitter:description',
+      content: 'A high and low level graphics API. Experience modularity in 3D graphics programming.',
+    }],
+    ['meta', {
+      name: 'twitter:image',
+      content: 'https://kryft-studios.github.io/cosmotic/cosmotic-banner.png',
+    }],],  themeConfig: {
     siteTitle: "Cosmotic",
     logo: "/cosmotic-logo.png",
     lastUpdated: {

@@ -1,47 +1,12 @@
-/**
- * Customize default theme styling by overriding CSS variables:
- * https://github.com/vuejs/vitepress/blob/main/src/client/theme-default/styles/vars.css
- */
 
 /**
- * Colors
- *
- * Each colors have exact same color scale system with 3 levels of solid
- * colors with different brightness, and 1 soft color.
- *
- * - `XXX-1`: The most solid color used mainly for colored text. It must
- *   satisfy the contrast ratio against when used on top of `XXX-soft`.
- *
- * - `XXX-2`: The color used mainly for hover state of the button.
- *
- * - `XXX-3`: The color for solid background, such as bg color of the button.
- *   It must satisfy the contrast ratio with pure white (#ffffff) text on
- *   top of it.
- *
- * - `XXX-soft`: The color used for subtle background such as custom container
- *   or badges. It must satisfy the contrast ratio when putting `XXX-1` colors
- *   on top of it.
- *
- *   The soft color must be semi transparent alpha channel. This is crucial
- *   because it allows adding multiple "soft" colors on top of each other
- *   to create a accent, such as when having inline code block inside
- *   custom containers.
- *
- * - `default`: The color used purely for subtle indication without any
- *   special meanings attached to it such as bg color for menu hover state.
- *
- * - `brand`: Used for primary brand colors, such as link text, button with
- *   brand theme, etc.
- *
- * - `tip`: Used to indicate useful information. The default theme uses the
- *   brand color for this by default.
- *
- * - `warning`: Used to indicate warning to the users. Used in custom
- *   container, badges, etc.
- *
- * - `danger`: Used to show error, or dangerous message to the users. Used
- *   in custom container, badges, etc.
- * -------------------------------------------------------------------------- */
+ * Cosmotic Documentation Theme
+ * Warm, minimal, cozy.
+ */
+
+/* =========================================
+   COLORS
+========================================= */
 
 :root {
   --vp-c-default-1: var(--vp-c-gray-1);
@@ -49,11 +14,13 @@
   --vp-c-default-3: var(--vp-c-gray-3);
   --vp-c-default-soft: var(--vp-c-gray-soft);
 
-  --vp-c-brand-1: var(--vp-c-indigo-1);
-  --vp-c-brand-2: var(--vp-c-indigo-2);
-  --vp-c-brand-3: var(--vp-c-indigo-3);
-  --vp-c-brand-soft: var(--vp-c-indigo-soft);
+  /* Brand */
+  --vp-c-brand-1: #c77b45;
+  --vp-c-brand-2: #b96e3b;
+  --vp-c-brand-3: #a85f30;
+  --vp-c-brand-soft: rgba(199, 123, 69, 0.14);
 
+  /* Semantic colors */
   --vp-c-tip-1: var(--vp-c-brand-1);
   --vp-c-tip-2: var(--vp-c-brand-2);
   --vp-c-tip-3: var(--vp-c-brand-3);
@@ -68,43 +35,304 @@
   --vp-c-danger-2: var(--vp-c-red-2);
   --vp-c-danger-3: var(--vp-c-red-3);
   --vp-c-danger-soft: var(--vp-c-red-soft);
-}
 
-/**
- * Component: Button
- * -------------------------------------------------------------------------- */
+  /* Backgrounds */
+  --vp-c-bg: #faf9f6;
+  --vp-c-bg-alt: #f5f3ef;
+  --vp-c-bg-elv: #ffffff;
+  --vp-c-bg-soft: #f2f0eb;
+  --vp-c-bg-mute: #eae7e1;
 
-:root {
+  /* Text */
+  --vp-c-text-1: #37352f;
+  --vp-c-text-2: #716e66;
+  --vp-c-text-3: #a09c93;
+
+  /* Borders */
+  --vp-c-border: #e9e5de;
+  --vp-c-divider: #e9e5de;
+  --vp-c-gutter: #f0eee9;
+
+  /* Code */
+  --vp-code-block-bg: #f2f0eb;
+  --vp-code-bg: #efede7;
+
+  /* Buttons */
   --vp-button-brand-border: transparent;
-  --vp-button-brand-text: var(--vp-c-white);
-  --vp-button-brand-bg: var(--vp-c-brand-3);
+  --vp-button-brand-text: #ffffff;
+  --vp-button-brand-bg: #bd7543;
   --vp-button-brand-hover-border: transparent;
-  --vp-button-brand-hover-text: var(--vp-c-white);
-  --vp-button-brand-hover-bg: var(--vp-c-brand-2);
+  --vp-button-brand-hover-text: #ffffff;
+  --vp-button-brand-hover-bg: #a96538;
   --vp-button-brand-active-border: transparent;
-  --vp-button-brand-active-text: var(--vp-c-white);
-  --vp-button-brand-active-bg: var(--vp-c-brand-1);
-}
+  --vp-button-brand-active-text: #ffffff;
+  --vp-button-brand-active-bg: #96582f;
 
-/**
- * Component: Home
- * -------------------------------------------------------------------------- */
+  /* Navigation */
+  --vp-nav-bg-color: rgba(250, 249, 246, 0.85);
+  --vp-sidebar-bg-color: #faf9f6;
 
-:root {
+  /* Hero */
   --vp-home-hero-name-color: transparent;
-  --vp-home-hero-name-background: -webkit-linear-gradient(
+  --vp-home-hero-name-background: linear-gradient(
     120deg,
-    #bd34fe 30%,
-    #41d1ff
+    #c77b45 30%,
+    #e5b58e
   );
 
   --vp-home-hero-image-background-image: linear-gradient(
     -45deg,
-    #bd34fe 50%,
-    #47caff 50%
+    #c77b45 50%,
+    #e5b58e 50%
   );
+
   --vp-home-hero-image-filter: blur(44px);
+
+  color-scheme: light;
 }
+
+/* Dark theme */
+
+.dark {
+  --vp-c-brand-1: #dba078;
+  --vp-c-brand-2: #cb8c61;
+  --vp-c-brand-3: #b9794e;
+  --vp-c-brand-soft: rgba(219, 160, 120, 0.14);
+
+  --vp-c-tip-1: var(--vp-c-brand-1);
+  --vp-c-tip-2: var(--vp-c-brand-2);
+  --vp-c-tip-3: var(--vp-c-brand-3);
+  --vp-c-tip-soft: var(--vp-c-brand-soft);
+
+  --vp-c-bg: #22221f;
+  --vp-c-bg-alt: #252521;
+  --vp-c-bg-elv: #2b2b27;
+  --vp-c-bg-soft: #292923;
+  --vp-c-bg-mute: #32322c;
+
+  --vp-c-text-1: #e5e1d8;
+  --vp-c-text-2: #b0aca2;
+  --vp-c-text-3: #858177;
+
+  --vp-c-border: #3a3932;
+  --vp-c-divider: #3a3932;
+  --vp-c-gutter: #303029;
+
+  --vp-code-block-bg: #292923;
+  --vp-code-bg: #32322c;
+
+  --vp-button-brand-bg: #b9794e;
+  --vp-button-brand-hover-bg: #ca8c61;
+  --vp-button-brand-active-bg: #dba078;
+
+  --vp-nav-bg-color: rgba(34, 34, 31, 0.85);
+  --vp-sidebar-bg-color: #22221f;
+
+  --vp-home-hero-name-background: linear-gradient(
+    120deg,
+    #dba078 30%,
+    #e9c4a5
+  );
+
+  --vp-home-hero-image-background-image: linear-gradient(
+    -45deg,
+    #b9794e 50%,
+    #dba078 50%
+  );
+
+  color-scheme: dark;
+}
+/* =========================================
+   GLOBAL
+========================================= */
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--vp-c-border) transparent;
+}
+
+html {
+  scroll-behavior: auto;
+  overscroll-behavior-y: auto;
+}
+
+body {
+  overflow-y: auto;
+}
+
+::selection {
+  background: rgba(199, 123, 69, 0.2);
+}
+
+/* =========================================
+   TRANSITIONS
+========================================= */
+
+a,
+button,
+.VPNavBarMenuLink,
+.VPSidebarItem .text,
+.VPFeature {
+  transition:
+    color 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease,
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+.VPNav {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--vp-c-divider);
+}
+
+.VPNavBarTitle .title {
+  font-weight: 650;
+  letter-spacing: -0.025em;
+}
+
+.VPNavBarMenuLink {
+  opacity: 0.8;
+}
+
+.VPNavBarMenuLink:hover {
+  opacity: 1;
+}
+
+/* =========================================
+   SIDEBAR
+========================================= */
+
+.VPSidebar {
+  border-right: 1px solid var(--vp-c-divider);
+ /* overscroll-behavior: contain;*/
+}
+
+.VPSidebarItem .text {
+  border-radius: 7px;
+}
+
+.VPSidebarItem.is-active > .item > .text {
+  color: var(--vp-c-brand-1);
+  font-weight: 600;
+}
+
+/* =========================================
+   DOCUMENTATION
+========================================= */
+
+.VPDoc h1,
+.VPDoc h2,
+.VPDoc h3,
+.VPDoc h4 {
+  letter-spacing: -0.035em;
+}
+
+.VPDoc h2 {
+  padding-bottom: 0.55em;
+  border-bottom: 1px solid var(--vp-c-divider);
+}
+
+/* Links */
+
+.vp-doc a {
+  text-decoration-color: color-mix(
+    in srgb,
+    var(--vp-c-brand-1) 45%,
+    transparent
+  );
+  text-underline-offset: 3px;
+}
+
+.vp-doc a:hover {
+  text-decoration-color: var(--vp-c-brand-1);
+}
+
+/* =========================================
+   CODE
+========================================= */
+
+.vp-doc div[class*="language-"] {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.025);
+}
+
+.vp-doc :not(pre) > code {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 5px;
+  padding: 2px 5px;
+}
+
+/* =========================================
+   TABLES
+========================================= */
+
+.vp-doc table {
+  display: table;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--vp-c-divider);
+}
+
+.vp-doc tr {
+  border: 0;
+}
+
+.vp-doc th,
+.vp-doc td {
+  border-right: 1px solid var(--vp-c-divider);
+  border-bottom: 1px solid var(--vp-c-divider);
+}
+
+.vp-doc tr:last-child td {
+  border-bottom: 0;
+}
+
+/* =========================================
+   FEATURE CARDS
+========================================= */
+
+.VPFeature {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+}
+
+.VPFeature:hover {
+  border-color: var(--vp-c-brand-1);
+  transform: translateY(-2px);
+}
+
+/* =========================================
+   SCROLLING & MOTION
+========================================= */
+
+/* Motion feedback during custom wheel scrolling */
+
+.VPDoc,
+.VPSidebar {
+  transition: filter 120ms ease-out;
+}
+
+html.is-wheel-gliding .VPDoc {
+  filter: blur(0.35px);
+}
+
+html.is-wheel-gliding .VPSidebar {
+  filter: blur(0.2px);
+}
+
+/* =========================================
+   RESPONSIVENESS
+========================================= */
 
 @media (min-width: 640px) {
   :root {
@@ -118,22 +346,32 @@
   }
 }
 
-/**
- * Component: Custom Block
- * -------------------------------------------------------------------------- */
+/* =========================================
+   ACCESSIBILITY
+========================================= */
 
-:root {
-  --vp-custom-block-tip-border: transparent;
-  --vp-custom-block-tip-text: var(--vp-c-text-1);
-  --vp-custom-block-tip-bg: var(--vp-c-brand-soft);
-  --vp-custom-block-tip-code-bg: var(--vp-c-brand-soft);
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  .VPDoc,
+  .VPSidebar {
+    filter: none !important;
+  }
 }
 
-/**
- * Component: Algolia
- * -------------------------------------------------------------------------- */
+/* =========================================
+   ALGOLIA
+========================================= */
 
 .DocSearch {
   --docsearch-primary-color: var(--vp-c-brand-1) !important;
 }
+
 

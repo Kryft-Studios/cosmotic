@@ -2,15 +2,12 @@
 import { h } from 'vue'
 import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
-import './style.css'
-
+import {NolebaseBreadcrumbs} from "@nolebase/vitepress-plugin-breadcrumbs/client"
 export default {
   extends: DefaultTheme,
-  Layout: () => {
-    return h(DefaultTheme.Layout, null, {
-      // https://vitepress.dev/guide/extending-default-theme#layout-slots
-    })
-  },
+  Layout: () => h(DefaultTheme.Layout, null, {
+     "doc-before": () => h(NolebaseBreadcrumbs),
+   }),
   enhanceApp({ app, router, siteData }) {
     // ...
   }

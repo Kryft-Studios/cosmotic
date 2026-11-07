@@ -1,13 +1,19 @@
-import { defineConfig } from 'vitepress'
-import {Dirent, existsSync, readdirSync} from "fs"
-import { join } from 'path';
-
+//there are some dum ahhh errors my dum ah cant fix
+import { defineConfig } from "vitepress";
+import { Dirent, existsSync, readdirSync } from "fs";
+import { join } from "path";
+import llms from "vitepress-plugin-llms";
 const apiDir = "./doc/api";
-
+import {withPwa} from "@vite-pwa/vitepress"
+import {
+  GitChangelog,
+  GitChangelogMarkdownSection,
+} from "@nolebase/vitepress-plugin-git-changelog/vite";
+import {generateBreadcrumbsData} from "@nolebase/vitepress-plugin-breadcrumbs/vitepress"
 function titleCase(string: string) {
   return string
     .split(/[\s\-]/)
-    .map(a => a[0]?.toUpperCase() + a.slice(1).toLowerCase())
+    .map((a) => a[0]?.toUpperCase() + a.slice(1).toLowerCase())
     .join(" ");
 }
 
@@ -22,40 +28,35 @@ const a = new Set([
   "types",
   "variables",
   "functions",
-  "constants"
+  "constants",
 ]);
 
 function generateSidebar(dir: string, base = "", topLevel = true) {
   const entries = readdirSync(dir, { withFileTypes: true });
 
   const directoryReadme = entries.some(
-    entry => entry.isFile() && entry.name.toLowerCase() === "readme.md"
+    (entry) => entry.isFile() && entry.name.toLowerCase() === "readme.md",
   );
 
   return entries
-    .map(entry => {
+    .map((entry) => {
       const fullPath = joinUrl(dir, entry.name);
       const name = entry.name.replace(/\.md$/, "");
 
       if (entry.isDirectory()) {
-        const text = a.has(name) || topLevel
-          ? titleCase(name)
-          : name;
-      
-        const childReadme = existsSync(join(fullPath, "README.md")) ||
-                            existsSync(join(fullPath, "readme.md"));
-      
+        const text = a.has(name) || topLevel ? titleCase(name) : name;
+
+        const childReadme =
+          existsSync(join(fullPath, "README.md")) ||
+          existsSync(join(fullPath, "readme.md"));
+
         return {
           text,
           collapsed: true,
           ...(childReadme
             ? { link: joinUrl("/api", joinUrl(base, entry.name)) + "/README" }
             : {}),
-          items: generateSidebar(
-            fullPath,
-            joinUrl(base, entry.name),
-            false
-          )
+          items: generateSidebar(fullPath, joinUrl(base, entry.name), false),
         };
       }
 
@@ -63,7 +64,7 @@ function generateSidebar(dir: string, base = "", topLevel = true) {
         if (topLevel) {
           return {
             text: "Main",
-            link: "/api/README"
+            link: "/api/README",
           };
         }
 
@@ -73,7 +74,7 @@ function generateSidebar(dir: string, base = "", topLevel = true) {
       if (entry.name.endsWith(".md")) {
         return {
           text: a.has(name) || topLevel ? titleCase(name) : name,
-          link: joinUrl("/api", joinUrl(base, name))
+          link: joinUrl("/api", joinUrl(base, name)),
         };
       }
 
@@ -82,28 +83,131 @@ function generateSidebar(dir: string, base = "", topLevel = true) {
     .filter(Boolean);
 }
 // https://vitepress.dev/reference/site-config
-export default defineConfig({
+
+export default /*withPwa*/(defineConfig({
   title: "Cosmotic API",
   base: "/cosmotic/",
-  description: "Cosmotic is a easy to use and easy to adapt webgpu abstraction. It aims full control over your webgpu device while confirming high level abstractions",
-"outDir": "../docs",
-  themeConfig: {
-    // https://vitepress.dev/reference/default-theme-config
-    nav: [
-      { text: 'Home', link: '/' },
-      { text: "API Reference", link: "/api/README.md" }
-    ],
+
+  vite: {
+    plugins: [
+      llms({
+        generateLLMsTxt: true,
+        generateLLMsFullTxt: true,
+        generateLLMFriendlyDocsForEachPage: true,
+        description:
+          "A High & Low Level Graphics API: Experience Modularity in 3D Graphics programming. Newbies, Pros, Hackers and Gods: All welcomed!",
+        domain: "https://kryft-studios.github.io/cosmotic",
+        title: "Cosmotic API",
+        injectLLMHint: true,
+      }),
+      
+      GitChangelog({
+        repoURL: () => "https://github.com/Kryft-Studios/cosmotic",
+      }),
     
+      GitChangelogMarkdownSection(),
+
+    ],
+    optimizeDeps: {
+        exclude: [
+          "@nolebase/vitepress-plugin-breadcrumbs/client",
+          "@nolebase/vitepress-plugin-enhanced-readabilities/client",
+          "@nolebase/vitepress-plugin-inline-link-preview/client",
+          "vitepress",
+          "@nolebase/ui",
+        ],
+      },
+    
+      ssr: {
+        noExternal: [
+          "@nolebase/vitepress-plugin-breadcrumbs",
+          "@nolebase/vitepress-plugin-enhanced-readabilities",
+          "@nolebase/vitepress-plugin-inline-link-preview",
+          "@nolebase/ui",
+        ],
+      },
+  },
+  transformPageData(pageData, ctx) {
+      generateBreadcrumbsData(pageData, ctx)
+  },
+  // @ts-ignore PWA is added by @vite-pwa/vitepress
+  pwa: {
+    registerType: "prompt",
+
+    manifest: {
+      name: "Cosmotic API",
+      short_name: "Cosmotic",
+      description: "Documentation for the Cosmotic WebGPU abstraction library.",
+      start_url: "/cosmotic/",
+      scope: "/cosmotic/",
+      display: "standalone",
+      theme_color: "#ff7a00",
+      background_color: "#111111",
+      icons: [
+        /** 
+        {
+          src: "/cosmotic/pwa-192x192.png",
+          sizes: "192x192",
+          type: "image/png",
+        },
+        {
+          src: "/cosmotic/pwa-512x512.png",
+          sizes: "512x512",
+          type: "image/png",
+        },
+        {
+          src: "/cosmotic/pwa-512x512.png",
+          sizes: "512x512",
+          type: "image/png",
+          purpose: "any maskable",
+        }, customise once u add icons **/ 
+      ],
+    },
+  },
+
+  sitemap: {
+    hostname: "https://kryft-studios.github.io/cosmotic",
+  },
+
+  description:
+    "Cosmotic is an easy-to-use and easy-to-adapt WebGPU abstraction. It aims to give you full control over your WebGPU device while providing high-level abstractions.",
+
+  outDir: "../docs",
+
+  themeConfig: {
+    lastUpdated: {
+      text: "Last modified",
+      formatOptions: {
+        dateStyle: "medium",
+        timeStyle: "short",
+      },
+    },
+
+    returnToTopLabel: "Return to top",
+
+    docFooter: {
+      next: "Next",
+      prev: "Previous",
+    },
+
+    nav: [
+      { text: "Home", link: "/" },
+      { text: "API Reference", link: "/api/README.md" },
+    ],
 
     sidebar: [
-        {text: "API Reference", items: generateSidebar(apiDir)}
-      
+      { text: "API Reference", items: generateSidebar(apiDir) },
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/Kryft-Studios/cosmotic' }, 
-      { icon: "youtube", link: "https://youtube.com/@ObiloxYT"},
-      
-    ]
-  }
-})
+      {
+        icon: "github",
+        link: "https://github.com/Kryft-Studios/cosmotic",
+      },
+      {
+        icon: "youtube",
+        link: "https://youtube.com/@ObiloxYT",
+      },
+    ],
+  },
+}));

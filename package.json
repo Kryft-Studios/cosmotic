@@ -1,0 +1,27 @@
+{
+
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublishOnly": "node prepublish.js",
+    "doc": "node gendocs.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@clean-jsdoc-theme/typedoc": "^5.2.1",
+    "@webgpu/types": "^0.1.74",
+    "typedoc": "^0.28.20",
+    "typedoc-material-theme": "^1.4.1",
+    "typedoc-plugin-mdn-links": "^5.1.1",
+    "typescript": "6.0.3"
+  },
+  "dependencies": {
+    "@cosmos-js/core": "^0.1.15",
+    "wgpu-matrix": "^3.4.2"
+  }
+}

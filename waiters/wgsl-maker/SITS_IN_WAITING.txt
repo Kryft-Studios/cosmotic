@@ -1,0 +1,5 @@
+This project is for now in waiting. Will implement this instead of using rmsl in the future.
+I can make this now, but i need a good idea, ill find some abstractions i can make. I've thought of a nativish syntax, but it needs some refinement.
+
+
+so for now use rmsl

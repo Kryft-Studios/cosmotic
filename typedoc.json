@@ -1,0 +1,16 @@
+
+{
+  "readme": "README.md",
+  "entryPointStrategy": "packages",
+  "entryPoints": ["packages/*"],
+  "packageOptions": {
+    "entryPoints": ["src/**/index.ts"],
+    "entryPointStrategy": "resolve"
+  },
+  "plugin": ["typedoc-material-theme"],
+  "navigation": {
+    "includeFolders": true,
+    "compactFolders": false
+  },
+  "excludeExternals": false
+}

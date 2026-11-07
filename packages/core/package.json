@@ -1,0 +1,38 @@
+{
+  "name": "@cosmotic/core",
+  "version": "0.0.1",
+  "author": {
+    "email": "AfriaStudios@outlook.in",
+    "name": "Kryft Studios",
+    "url": "https://github.com/Kryft-Studios"
+  },
+  "repository": {
+    "directory": "packages/core",
+    "url": "https://github.com/Kryft-Studios/cosmotic"
+  },
+  "license": "Apache-2.0",
+  "description": "Cosmotic is a easy to use and easy to adapt webgpu abstraction. It aims full control over your webgpu device while confirming high level abstractions",
+  "homepage": "https://Kryft-Studios.github.io/cosmotic",
+  "keywords": [
+    "3D",
+    "Graphics",
+    "Low",
+    "WebGPU",
+    "webgpu",
+    "3d",
+    "graphics",
+    "low",
+    "high-level",
+    "low-level",
+    "low level",
+    "high level"
+  ],
+  "packageManager": "pnpm@12.18.0",
+  "readme": "README.md",
+  "devDependencies": {
+    "@webgpu/types": "^0.1.74"
+  },
+  "dependencies": {
+    "wgpu-matrix": "^3.4.2"
+  }
+}

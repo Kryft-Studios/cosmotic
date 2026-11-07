@@ -165,10 +165,6 @@ settings:
 importers:
 
   .:
-    dependencies:
-      wgpu-matrix:
-        specifier: ^3.4.2
-        version: 3.4.2
     devDependencies:
       '@webgpu/types':
         specifier: ^0.1.74
@@ -307,9 +303,6 @@ packages:
     engines: {node: '>=16.20.0'}
     hasBin: true
 
-  wgpu-matrix@3.4.2:
-    resolution: {integrity: sha512-IfZFbG7olEYBD76VCZy2TzqM57GKy3LT++AZh37tMHPPByO6R2h61zXGBZFNPi2IzxNivNi8y5dvze5PjaczjA==}
-
 snapshots:
 
   '@typescript/typescript-aix-ppc64@7.0.2':
@@ -396,5 +389,3 @@ snapshots:
       '@typescript/typescript-sunos-x64': 7.0.2
       '@typescript/typescript-win32-arm64': 7.0.2
       '@typescript/typescript-win32-x64': 7.0.2
-
-  wgpu-matrix@3.4.2: {}

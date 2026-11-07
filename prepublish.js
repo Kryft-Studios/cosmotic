@@ -1,7 +1,13 @@
 import { execSync } from "node:child_process";
-import { globSync, readFileSync, writeFileSync } from "node:fs";
+import { globSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { basename, dirname } from "node:path";
-execSync("pnpm exec tsc")
+let pkgs = process.argv[2] === "e" ? ["."] : readdirSync("packages")
+if(pkgs[0] !== "."){process.chdir("packages");console.log("exception")}
+
+for(const a of pkgs){
+  execSync("pnpm exec tsc")
+
+  process.chdir(a)
 const pjson = JSON.parse(readFileSync("package.json", "utf8"));
 
 const exports = Object.fromEntries([
@@ -12,6 +18,7 @@ const exports = Object.fromEntries([
   ])
 ]);
 
-pjson.exports = exports;
-
+pjson.exports = exports
 writeFileSync("package.json", JSON.stringify(pjson, null, 2) + "\n");
+process.cwd("..")
+}

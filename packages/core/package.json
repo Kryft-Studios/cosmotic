@@ -33,16 +33,13 @@
     "@webgpu/types": "^0.1.74",
     "typescript": "^7.0.2"
   },
-  "dependencies": {
-    "wgpu-matrix": "^3.4.2"
-  },
-  "scripts": {
-    "prepublishOnly": "node ../../prepublish.js e",
-    "prepub": "node ../../prepublish.js e"
-  },
   "exports": {
     ".": "./index.js",
     "./texture": "./dist/texture/index.js",
     "./helpers": "./dist/helpers/index.js"
+  },
+  "scripts": {
+    "prepublishOnly": "node ../../prepublish.js e",
+    "prepub": "node ../../prepublish.js e"
   }
 }

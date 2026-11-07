@@ -2,15 +2,26 @@
 {
   "readme": "README.md",
   "entryPointStrategy": "packages",
-  "entryPoints": ["packages/*"],
+  "entryPoints": [
+    "packages/core"
+  ],
   "packageOptions": {
-    "entryPoints": ["src/**/index.ts"],
+    "entryPoints": [
+      "src/**/index.ts"
+    ],
     "entryPointStrategy": "resolve"
   },
-  "plugin": ["typedoc-material-theme"],
-  "navigation": {
-    "includeFolders": true,
-    "compactFolders": false
+  "out": "./docs/api",
+  "docsRoot": "./docs",
+  "plugin": [
+    "typedoc-plugin-markdown",
+    "typedoc-vitepress-theme"
+  ],
+  "sidebar": {
+    "autoConfiguration": true,
+    "format": "vitepress",
+    "collapsed": true,
+    "pretty": true
   },
   "excludeExternals": false
 }

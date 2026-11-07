@@ -10,9 +10,9 @@ hero:
     - theme: alt
       text: API Reference
       link: /api/README.md
-image:
-  src: /cosmotic-banner.png
-  alt: Cosmotic's official banner
+      image:
+        src: /cosmotic-banner.png
+        alt: Cosmotic's official banner
 features:
   - title: Direct & Indirect
     details: Low-Level & High-Level - both at the same time

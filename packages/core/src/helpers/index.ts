@@ -1,5 +1,4 @@
-
-/** 
+/**
  * @packageDocumentation
  * @author ObiloxYT
  * @author KryftStudios
@@ -9,7 +8,7 @@
  * @access public
  * @file src/texture/index.ts
  * @fileoverview Helpers like deepClone, deepRest
-*/
+ */
 import { deepClone } from "./deepClone";
 import { deepRest } from "./deepRest";
-export {deepClone, deepRest }
+export { deepClone, deepRest };

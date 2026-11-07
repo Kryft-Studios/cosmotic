@@ -84,6 +84,7 @@ function generateSidebar(dir: string, base = "", topLevel = true) {
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "Cosmotic API",
+  Base: "/cosmotic/",
   description: "Cosmotic is a easy to use and easy to adapt webgpu abstraction. It aims full control over your webgpu device while confirming high level abstractions",
 "outDir": "../docs",
   themeConfig: {

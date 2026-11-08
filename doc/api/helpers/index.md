@@ -1,7 +1,3 @@
-[**@cosmotic/core**](../README.md)
-
-***
-
 [@cosmotic/core](../packages.md) / helpers
 
 # helpers

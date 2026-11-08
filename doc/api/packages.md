@@ -1,11 +1,7 @@
-[**@cosmotic/core**](README.md)
-
-***
-
 # @cosmotic/core
 
 ## Packages
 
-- [helpers](helpers/README.md)
-- [index](index/README.md)
-- [texture](texture/README.md)
+- [helpers](helpers/index.md)
+- [index](index/index.md)
+- [texture](texture/index.md)

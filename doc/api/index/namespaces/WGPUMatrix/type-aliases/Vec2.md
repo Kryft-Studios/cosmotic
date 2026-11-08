@@ -1,8 +1,4 @@
-[**@cosmotic/core**](../../../../README.md)
-
-***
-
-[@cosmotic/core](../../../../packages.md) / [index](../../../README.md) / [WGPUMatrix](../README.md) / Vec2
+[@cosmotic/core](../../../../packages.md) / [index](../../../index.md) / [WGPUMatrix](../index.md) / Vec2
 
 # Type Alias: Vec2
 

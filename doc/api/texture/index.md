@@ -1,7 +1,3 @@
-[**@cosmotic/core**](../README.md)
-
-***
-
 [@cosmotic/core](../packages.md) / texture
 
 # texture
@@ -36,11 +32,13 @@ Implementation of an modular texture abstraction.
 
 ## Namespaces
 
-- [Texture](namespaces/Texture/README.md)
+- [Texture](namespaces/Texture/index.md)
+- [Texture2D](namespaces/Texture2D/index.md)
 
 ## Classes
 
 - [Texture](classes/Texture.md)
+- [Texture2D](classes/Texture2D.md)
 
 ## References
 

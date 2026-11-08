@@ -1,12 +1,8 @@
-[**@cosmotic/core**](../../../../README.md)
-
-***
-
-[@cosmotic/core](../../../../packages.md) / [texture](../../../README.md) / [Texture](../README.md) / view\_descriptor
+[@cosmotic/core](../../../../packages.md) / [texture](../../../index.md) / [Texture](../index.md) / view\_descriptor
 
 # Interface: view\_descriptor
 
-Defined in: [packages/core/src/texture/index.ts:153](https://github.com/Kryft-Studios/cosmotic/blob/3e05f8ea027f62c70c59d2ca079af97bd05faf32/packages/core/src/texture/index.ts#L153)
+Defined in: [packages/core/src/texture/index.ts:346](https://github.com/Kryft-Studios/cosmotic/blob/14e0ed802e718c481be501f8a48ba990ba4c03ef/packages/core/src/texture/index.ts#L346)
 
 ## Properties
 
@@ -14,7 +10,7 @@ Defined in: [packages/core/src/texture/index.ts:153](https://github.com/Kryft-St
 
 > `optional` **aspect?**: `GPUTextureAspect`
 
-Defined in: [packages/core/src/texture/index.ts:158](https://github.com/Kryft-Studios/cosmotic/blob/3e05f8ea027f62c70c59d2ca079af97bd05faf32/packages/core/src/texture/index.ts#L158)
+Defined in: [packages/core/src/texture/index.ts:351](https://github.com/Kryft-Studios/cosmotic/blob/14e0ed802e718c481be501f8a48ba990ba4c03ef/packages/core/src/texture/index.ts#L351)
 
 Texture aspect for your view. Normally you should use all
 
@@ -24,7 +20,7 @@ Texture aspect for your view. Normally you should use all
 
 > `optional` **label?**: `string`
 
-Defined in: [packages/core/src/texture/index.ts:155](https://github.com/Kryft-Studios/cosmotic/blob/3e05f8ea027f62c70c59d2ca079af97bd05faf32/packages/core/src/texture/index.ts#L155)
+Defined in: [packages/core/src/texture/index.ts:348](https://github.com/Kryft-Studios/cosmotic/blob/14e0ed802e718c481be501f8a48ba990ba4c03ef/packages/core/src/texture/index.ts#L348)
 
 A label for your texture view
 
@@ -34,7 +30,7 @@ A label for your texture view
 
 > `optional` **layers?**: `object`
 
-Defined in: [packages/core/src/texture/index.ts:160](https://github.com/Kryft-Studios/cosmotic/blob/3e05f8ea027f62c70c59d2ca079af97bd05faf32/packages/core/src/texture/index.ts#L160)
+Defined in: [packages/core/src/texture/index.ts:353](https://github.com/Kryft-Studios/cosmotic/blob/14e0ed802e718c481be501f8a48ba990ba4c03ef/packages/core/src/texture/index.ts#L353)
 
 Layers configuration for this view. For configurating the count, you must config the texture descriptor
 
@@ -48,7 +44,7 @@ Layers configuration for this view. For configurating the count, you must config
 
 > `optional` **mipLevel?**: `object`
 
-Defined in: [packages/core/src/texture/index.ts:166](https://github.com/Kryft-Studios/cosmotic/blob/3e05f8ea027f62c70c59d2ca079af97bd05faf32/packages/core/src/texture/index.ts#L166)
+Defined in: [packages/core/src/texture/index.ts:358](https://github.com/Kryft-Studios/cosmotic/blob/14e0ed802e718c481be501f8a48ba990ba4c03ef/packages/core/src/texture/index.ts#L358)
 
 Mip level configuration for this view. For configurating the count, you must config the texture desc
 
@@ -62,4 +58,4 @@ Mip level configuration for this view. For configurating the count, you must con
 
 > `optional` **swizzle?**: `string`
 
-Defined in: [packages/core/src/texture/index.ts:163](https://github.com/Kryft-Studios/cosmotic/blob/3e05f8ea027f62c70c59d2ca079af97bd05faf32/packages/core/src/texture/index.ts#L163)
+Defined in: [packages/core/src/texture/index.ts:355](https://github.com/Kryft-Studios/cosmotic/blob/14e0ed802e718c481be501f8a48ba990ba4c03ef/packages/core/src/texture/index.ts#L355)

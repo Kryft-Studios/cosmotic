@@ -1,5 +1,0 @@
-**@cosmotic/core**
-
-***
-
-# Cosmotic

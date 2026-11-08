@@ -1,8 +1,4 @@
-[**@cosmotic/core**](../../../README.md)
-
-***
-
-[@cosmotic/core](../../../packages.md) / [texture](../../README.md) / Texture
+[@cosmotic/core](../../../packages.md) / [texture](../../index.md) / Texture
 
 # Texture
 
@@ -18,6 +14,7 @@
 ## Interfaces
 
 - [descriptor](interfaces/descriptor.md)
+- [distinfo](interfaces/distinfo.md)
 - [view\_descriptor](interfaces/view_descriptor.md)
 
 ## Type Aliases

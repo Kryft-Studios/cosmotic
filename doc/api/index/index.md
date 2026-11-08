@@ -1,15 +1,11 @@
-[**@cosmotic/core**](../README.md)
-
-***
-
 [@cosmotic/core](../packages.md) / index
 
 # index
 
 ## Namespaces
 
-- [Cosmotic](namespaces/Cosmotic/README.md)
-- [WGPUMatrix](namespaces/WGPUMatrix/README.md)
+- [Cosmotic](namespaces/Cosmotic/index.md)
+- [WGPUMatrix](namespaces/WGPUMatrix/index.md)
 
 ## Classes
 

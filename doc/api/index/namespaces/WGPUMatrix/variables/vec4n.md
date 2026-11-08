@@ -1,8 +1,4 @@
-[**@cosmotic/core**](../../../../README.md)
-
-***
-
-[@cosmotic/core](../../../../packages.md) / [index](../../../README.md) / [WGPUMatrix](../README.md) / vec4n
+[@cosmotic/core](../../../../packages.md) / [index](../../../index.md) / [WGPUMatrix](../index.md) / vec4n
 
 # Variable: vec4n
 

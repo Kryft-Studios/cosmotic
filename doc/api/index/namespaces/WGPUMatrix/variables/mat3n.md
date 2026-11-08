@@ -1,8 +1,4 @@
-[**@cosmotic/core**](../../../../README.md)
-
-***
-
-[@cosmotic/core](../../../../packages.md) / [index](../../../README.md) / [WGPUMatrix](../README.md) / mat3n
+[@cosmotic/core](../../../../packages.md) / [index](../../../index.md) / [WGPUMatrix](../index.md) / mat3n
 
 # Variable: mat3n
 

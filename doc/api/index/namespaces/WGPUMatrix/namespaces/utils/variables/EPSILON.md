@@ -1,8 +1,4 @@
-[**@cosmotic/core**](../../../../../../README.md)
-
-***
-
-[@cosmotic/core](../../../../../../packages.md) / [index](../../../../../README.md) / [WGPUMatrix](../../../README.md) / [utils](../README.md) / EPSILON
+[@cosmotic/core](../../../../../../packages.md) / [index](../../../../../index.md) / [WGPUMatrix](../../../index.md) / [utils](../index.md) / EPSILON
 
 # Variable: EPSILON
 

@@ -1,12 +1,8 @@
-[**@cosmotic/core**](../../../../README.md)
-
-***
-
-[@cosmotic/core](../../../../packages.md) / [texture](../../../README.md) / [Texture](../README.md) / Dimension
+[@cosmotic/core](../../../../packages.md) / [texture](../../../index.md) / [Texture](../index.md) / Dimension
 
 # Enumeration: Dimension
 
-Defined in: [packages/core/src/texture/index.ts:118](https://github.com/Kryft-Studios/cosmotic/blob/3e05f8ea027f62c70c59d2ca079af97bd05faf32/packages/core/src/texture/index.ts#L118)
+Defined in: [packages/core/src/texture/index.ts:312](https://github.com/Kryft-Studios/cosmotic/blob/14e0ed802e718c481be501f8a48ba990ba4c03ef/packages/core/src/texture/index.ts#L312)
 
 performance abstraction of GPUTextureViewDimension
 
@@ -16,7 +12,7 @@ performance abstraction of GPUTextureViewDimension
 
 > **1d**: `0`
 
-Defined in: [packages/core/src/texture/index.ts:121](https://github.com/Kryft-Studios/cosmotic/blob/3e05f8ea027f62c70c59d2ca079af97bd05faf32/packages/core/src/texture/index.ts#L121)
+Defined in: [packages/core/src/texture/index.ts:315](https://github.com/Kryft-Studios/cosmotic/blob/14e0ed802e718c481be501f8a48ba990ba4c03ef/packages/core/src/texture/index.ts#L315)
 
 ***
 
@@ -24,7 +20,7 @@ Defined in: [packages/core/src/texture/index.ts:121](https://github.com/Kryft-St
 
 > **2d**: `1`
 
-Defined in: [packages/core/src/texture/index.ts:122](https://github.com/Kryft-Studios/cosmotic/blob/3e05f8ea027f62c70c59d2ca079af97bd05faf32/packages/core/src/texture/index.ts#L122)
+Defined in: [packages/core/src/texture/index.ts:316](https://github.com/Kryft-Studios/cosmotic/blob/14e0ed802e718c481be501f8a48ba990ba4c03ef/packages/core/src/texture/index.ts#L316)
 
 ***
 
@@ -32,7 +28,7 @@ Defined in: [packages/core/src/texture/index.ts:122](https://github.com/Kryft-St
 
 > **2d-array**: `2`
 
-Defined in: [packages/core/src/texture/index.ts:123](https://github.com/Kryft-Studios/cosmotic/blob/3e05f8ea027f62c70c59d2ca079af97bd05faf32/packages/core/src/texture/index.ts#L123)
+Defined in: [packages/core/src/texture/index.ts:317](https://github.com/Kryft-Studios/cosmotic/blob/14e0ed802e718c481be501f8a48ba990ba4c03ef/packages/core/src/texture/index.ts#L317)
 
 ***
 
@@ -40,7 +36,7 @@ Defined in: [packages/core/src/texture/index.ts:123](https://github.com/Kryft-St
 
 > **3d**: `3`
 
-Defined in: [packages/core/src/texture/index.ts:124](https://github.com/Kryft-Studios/cosmotic/blob/3e05f8ea027f62c70c59d2ca079af97bd05faf32/packages/core/src/texture/index.ts#L124)
+Defined in: [packages/core/src/texture/index.ts:318](https://github.com/Kryft-Studios/cosmotic/blob/14e0ed802e718c481be501f8a48ba990ba4c03ef/packages/core/src/texture/index.ts#L318)
 
 ***
 
@@ -48,7 +44,7 @@ Defined in: [packages/core/src/texture/index.ts:124](https://github.com/Kryft-St
 
 > **cube**: `4`
 
-Defined in: [packages/core/src/texture/index.ts:125](https://github.com/Kryft-Studios/cosmotic/blob/3e05f8ea027f62c70c59d2ca079af97bd05faf32/packages/core/src/texture/index.ts#L125)
+Defined in: [packages/core/src/texture/index.ts:319](https://github.com/Kryft-Studios/cosmotic/blob/14e0ed802e718c481be501f8a48ba990ba4c03ef/packages/core/src/texture/index.ts#L319)
 
 ***
 
@@ -56,4 +52,4 @@ Defined in: [packages/core/src/texture/index.ts:125](https://github.com/Kryft-St
 
 > **cube-array**: `5`
 
-Defined in: [packages/core/src/texture/index.ts:126](https://github.com/Kryft-Studios/cosmotic/blob/3e05f8ea027f62c70c59d2ca079af97bd05faf32/packages/core/src/texture/index.ts#L126)
+Defined in: [packages/core/src/texture/index.ts:320](https://github.com/Kryft-Studios/cosmotic/blob/14e0ed802e718c481be501f8a48ba990ba4c03ef/packages/core/src/texture/index.ts#L320)

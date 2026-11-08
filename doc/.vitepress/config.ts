@@ -1,7 +1,7 @@
 //there are some dum ahhh errors my dum ah cant fix
 import { defineConfig } from "vitepress";
-import { Dirent, existsSync, readdirSync } from "fs";
-import { join } from "path";
+import { Dirent, existsSync, readFileSync, readdirSync } from "fs";
+import { join, relative, resolve } from "path";
 import llms from "vitepress-plugin-llms";
 const apiDir = "./doc/api";
 import {withPwa} from "@vite-pwa/vitepress"
@@ -10,6 +10,44 @@ import {
   GitChangelogMarkdownSection,
 } from "@nolebase/vitepress-plugin-git-changelog/vite";
 import {generateBreadcrumbsData} from "@nolebase/vitepress-plugin-breadcrumbs/vitepress"
+
+function getDefinedInSourcePath(markdown: string) {
+  const definedIn = markdown.match(/^\s*Defined in:\s+\[([^\]]+)\]/m);
+  return definedIn?.[1].replace(/:\d+$/, "").replace(/\\/g, "/");
+}
+
+function generateApiPageSourceMap(apiDirectory: string, docsRoot: string) {
+  const pagesBySource = new Map<string, string[]>();
+
+  function visit(directory: string) {
+    for (const entry of readdirSync(directory, { withFileTypes: true })) {
+      const fullPath = join(directory, entry.name);
+
+      if (entry.isDirectory()) {
+        visit(fullPath);
+        continue;
+      }
+
+      if (!entry.name.endsWith(".md")) continue;
+
+      const sourcePath = getDefinedInSourcePath(readFileSync(fullPath, "utf8"));
+      if (!sourcePath) continue;
+      const pagePath = relative(docsRoot, fullPath).replace(/\\/g, "/");
+      const pages = pagesBySource.get(sourcePath) ?? [];
+      pages.push(pagePath);
+      pagesBySource.set(sourcePath, pages);
+    }
+  }
+
+  visit(apiDirectory);
+  return pagesBySource;
+}
+
+const apiPagesBySource = generateApiPageSourceMap(
+  resolve(apiDir),
+  resolve("doc"),
+);
+
 function titleCase(string: string) {
   return string
     .split(/[\s\-]/)
@@ -103,11 +141,26 @@ export default /*withPwa*/(defineConfig({
       }),
 
       GitChangelog({
-        
+        include: ["packages/core/src/**/*.ts"],
+        rewritePathsBy: {
+          handler: (commit, path) => {
+            const pagePaths = apiPagesBySource.get(path.replace(/\\/g, "/")) ?? [];
+            // GitChangelog currently ignores the handler's return value.
+            for (const pagePath of pagePaths) {
+              if (!commit.paths.includes(pagePath)) commit.paths.push(pagePath);
+            }
+            return path;
+          },
+        },
         repoURL: () => "https://github.com/Kryft-Studios/cosmotic",
       }),
 
-      GitChangelogMarkdownSection(),
+      GitChangelogMarkdownSection({
+        exclude: (id) => {
+          const markdownPath = id.split("?")[0];
+          return !getDefinedInSourcePath(readFileSync(markdownPath, "utf8"));
+        },
+      }),
 
     ],
     optimizeDeps: {

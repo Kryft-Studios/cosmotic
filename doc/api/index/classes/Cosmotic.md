@@ -1,12 +1,8 @@
-[**@cosmotic/core**](../../README.md)
-
-***
-
-[@cosmotic/core](../../packages.md) / [index](../README.md) / Cosmotic
+[@cosmotic/core](../../packages.md) / [index](../index.md) / Cosmotic
 
 # Class: Cosmotic
 
-Defined in: [packages/core/src/index.ts:3](https://github.com/Kryft-Studios/cosmotic/blob/3e05f8ea027f62c70c59d2ca079af97bd05faf32/packages/core/src/index.ts#L3)
+Defined in: [packages/core/src/index.ts:3](https://github.com/Kryft-Studios/cosmotic/blob/14e0ed802e718c481be501f8a48ba990ba4c03ef/packages/core/src/index.ts#L3)
 
 ## Constructors
 
@@ -14,7 +10,7 @@ Defined in: [packages/core/src/index.ts:3](https://github.com/Kryft-Studios/cosm
 
 > **new Cosmotic**(`cos`): `Cosmotic`
 
-Defined in: [packages/core/src/index.ts:4](https://github.com/Kryft-Studios/cosmotic/blob/3e05f8ea027f62c70c59d2ca079af97bd05faf32/packages/core/src/index.ts#L4)
+Defined in: [packages/core/src/index.ts:4](https://github.com/Kryft-Studios/cosmotic/blob/14e0ed802e718c481be501f8a48ba990ba4c03ef/packages/core/src/index.ts#L4)
 
 #### Parameters
 
@@ -32,4 +28,4 @@ Defined in: [packages/core/src/index.ts:4](https://github.com/Kryft-Studios/cosm
 
 > **cos**: `Cosmos`
 
-Defined in: [packages/core/src/index.ts:4](https://github.com/Kryft-Studios/cosmotic/blob/3e05f8ea027f62c70c59d2ca079af97bd05faf32/packages/core/src/index.ts#L4)
+Defined in: [packages/core/src/index.ts:4](https://github.com/Kryft-Studios/cosmotic/blob/14e0ed802e718c481be501f8a48ba990ba4c03ef/packages/core/src/index.ts#L4)

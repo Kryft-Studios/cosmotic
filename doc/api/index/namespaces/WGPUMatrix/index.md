@@ -1,14 +1,10 @@
-[**@cosmotic/core**](../../../README.md)
-
-***
-
-[@cosmotic/core](../../../packages.md) / [index](../../README.md) / WGPUMatrix
+[@cosmotic/core](../../../packages.md) / [index](../../index.md) / WGPUMatrix
 
 # WGPUMatrix
 
 ## Namespaces
 
-- [utils](namespaces/utils/README.md)
+- [utils](namespaces/utils/index.md)
 
 ## Interfaces
 

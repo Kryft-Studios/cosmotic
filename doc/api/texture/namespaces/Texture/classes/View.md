@@ -1,12 +1,8 @@
-[**@cosmotic/core**](../../../../README.md)
-
-***
-
-[@cosmotic/core](../../../../packages.md) / [texture](../../../README.md) / [Texture](../README.md) / View
+[@cosmotic/core](../../../../packages.md) / [texture](../../../index.md) / [Texture](../index.md) / View
 
 # Class: View
 
-Defined in: [packages/core/src/texture/index.ts:82](https://github.com/Kryft-Studios/cosmotic/blob/3e05f8ea027f62c70c59d2ca079af97bd05faf32/packages/core/src/texture/index.ts#L82)
+Defined in: [packages/core/src/texture/index.ts:272](https://github.com/Kryft-Studios/cosmotic/blob/14e0ed802e718c481be501f8a48ba990ba4c03ef/packages/core/src/texture/index.ts#L272)
 
 ## Constructors
 
@@ -14,7 +10,7 @@ Defined in: [packages/core/src/texture/index.ts:82](https://github.com/Kryft-Stu
 
 > **new View**(`z_parentTexture`, `viewDesc`): `View`
 
-Defined in: [packages/core/src/texture/index.ts:83](https://github.com/Kryft-Studios/cosmotic/blob/3e05f8ea027f62c70c59d2ca079af97bd05faf32/packages/core/src/texture/index.ts#L83)
+Defined in: [packages/core/src/texture/index.ts:273](https://github.com/Kryft-Studios/cosmotic/blob/14e0ed802e718c481be501f8a48ba990ba4c03ef/packages/core/src/texture/index.ts#L273)
 
 #### Parameters
 
@@ -36,7 +32,7 @@ Defined in: [packages/core/src/texture/index.ts:83](https://github.com/Kryft-Stu
 
 > **aspect**: `GPUTextureAspect` \| `undefined`
 
-Defined in: [packages/core/src/texture/index.ts:107](https://github.com/Kryft-Studios/cosmotic/blob/3e05f8ea027f62c70c59d2ca079af97bd05faf32/packages/core/src/texture/index.ts#L107)
+Defined in: [packages/core/src/texture/index.ts:301](https://github.com/Kryft-Studios/cosmotic/blob/14e0ed802e718c481be501f8a48ba990ba4c03ef/packages/core/src/texture/index.ts#L301)
 
 Aspect of the texture view.
 
@@ -46,7 +42,7 @@ Aspect of the texture view.
 
 > **label**: `string` \| `undefined`
 
-Defined in: [packages/core/src/texture/index.ts:109](https://github.com/Kryft-Studios/cosmotic/blob/3e05f8ea027f62c70c59d2ca079af97bd05faf32/packages/core/src/texture/index.ts#L109)
+Defined in: [packages/core/src/texture/index.ts:303](https://github.com/Kryft-Studios/cosmotic/blob/14e0ed802e718c481be501f8a48ba990ba4c03ef/packages/core/src/texture/index.ts#L303)
 
 The label of this texture view
 
@@ -56,7 +52,7 @@ The label of this texture view
 
 > **layersBase**: `number` \| `undefined`
 
-Defined in: [packages/core/src/texture/index.ts:115](https://github.com/Kryft-Studios/cosmotic/blob/3e05f8ea027f62c70c59d2ca079af97bd05faf32/packages/core/src/texture/index.ts#L115)
+Defined in: [packages/core/src/texture/index.ts:309](https://github.com/Kryft-Studios/cosmotic/blob/14e0ed802e718c481be501f8a48ba990ba4c03ef/packages/core/src/texture/index.ts#L309)
 
 Layers base.
 
@@ -66,7 +62,7 @@ Layers base.
 
 > **mipLevelBase**: `number` \| `undefined`
 
-Defined in: [packages/core/src/texture/index.ts:113](https://github.com/Kryft-Studios/cosmotic/blob/3e05f8ea027f62c70c59d2ca079af97bd05faf32/packages/core/src/texture/index.ts#L113)
+Defined in: [packages/core/src/texture/index.ts:307](https://github.com/Kryft-Studios/cosmotic/blob/14e0ed802e718c481be501f8a48ba990ba4c03ef/packages/core/src/texture/index.ts#L307)
 
 Mip level base, being the index of the most detailed texture
 
@@ -76,7 +72,7 @@ Mip level base, being the index of the most detailed texture
 
 > **swizzle**: `string` \| `undefined`
 
-Defined in: [packages/core/src/texture/index.ts:111](https://github.com/Kryft-Studios/cosmotic/blob/3e05f8ea027f62c70c59d2ca079af97bd05faf32/packages/core/src/texture/index.ts#L111)
+Defined in: [packages/core/src/texture/index.ts:305](https://github.com/Kryft-Studios/cosmotic/blob/14e0ed802e718c481be501f8a48ba990ba4c03ef/packages/core/src/texture/index.ts#L305)
 
 Swizzle of this texture view.
 
@@ -86,7 +82,7 @@ Swizzle of this texture view.
 
 > `readonly` **z\_parentTexture**: [`Texture`](../../../classes/Texture.md)
 
-Defined in: [packages/core/src/texture/index.ts:84](https://github.com/Kryft-Studios/cosmotic/blob/3e05f8ea027f62c70c59d2ca079af97bd05faf32/packages/core/src/texture/index.ts#L84)
+Defined in: [packages/core/src/texture/index.ts:274](https://github.com/Kryft-Studios/cosmotic/blob/14e0ed802e718c481be501f8a48ba990ba4c03ef/packages/core/src/texture/index.ts#L274)
 
 ***
 
@@ -94,4 +90,4 @@ Defined in: [packages/core/src/texture/index.ts:84](https://github.com/Kryft-Stu
 
 > `readonly` **z\_tv**: `GPUTextureView`
 
-Defined in: [packages/core/src/texture/index.ts:105](https://github.com/Kryft-Studios/cosmotic/blob/3e05f8ea027f62c70c59d2ca079af97bd05faf32/packages/core/src/texture/index.ts#L105)
+Defined in: [packages/core/src/texture/index.ts:299](https://github.com/Kryft-Studios/cosmotic/blob/14e0ed802e718c481be501f8a48ba990ba4c03ef/packages/core/src/texture/index.ts#L299)

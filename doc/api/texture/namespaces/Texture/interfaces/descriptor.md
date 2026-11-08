@@ -1,14 +1,14 @@
-[**@cosmotic/core**](../../../../README.md)
-
-***
-
-[@cosmotic/core](../../../../packages.md) / [texture](../../../README.md) / [Texture](../README.md) / descriptor
+[@cosmotic/core](../../../../packages.md) / [texture](../../../index.md) / [Texture](../index.md) / descriptor
 
 # Interface: descriptor
 
-Defined in: [packages/core/src/texture/index.ts:169](https://github.com/Kryft-Studios/cosmotic/blob/3e05f8ea027f62c70c59d2ca079af97bd05faf32/packages/core/src/texture/index.ts#L169)
+Defined in: [packages/core/src/texture/index.ts:361](https://github.com/Kryft-Studios/cosmotic/blob/14e0ed802e718c481be501f8a48ba990ba4c03ef/packages/core/src/texture/index.ts#L361)
 
 The descriptor for the texture.
+
+## Extended by
+
+- [`descriptor`](../../Texture2D/interfaces/descriptor.md)
 
 ## Properties
 
@@ -16,7 +16,7 @@ The descriptor for the texture.
 
 > `optional` **defaultViewConfig?**: [`view_descriptor`](view_descriptor.md)
 
-Defined in: [packages/core/src/texture/index.ts:213](https://github.com/Kryft-Studios/cosmotic/blob/3e05f8ea027f62c70c59d2ca079af97bd05faf32/packages/core/src/texture/index.ts#L213)
+Defined in: [packages/core/src/texture/index.ts:405](https://github.com/Kryft-Studios/cosmotic/blob/14e0ed802e718c481be501f8a48ba990ba4c03ef/packages/core/src/texture/index.ts#L405)
 
 default view config. all individually passed configs are deeply rested to this.
 
@@ -26,7 +26,7 @@ default view config. all individually passed configs are deeply rested to this.
 
 > **dimension**: [`Dimension`](../enumerations/Dimension.md) \| `GPUTextureViewDimension`
 
-Defined in: [packages/core/src/texture/index.ts:171](https://github.com/Kryft-Studios/cosmotic/blob/3e05f8ea027f62c70c59d2ca079af97bd05faf32/packages/core/src/texture/index.ts#L171)
+Defined in: [packages/core/src/texture/index.ts:363](https://github.com/Kryft-Studios/cosmotic/blob/14e0ed802e718c481be501f8a48ba990ba4c03ef/packages/core/src/texture/index.ts#L363)
 
 The dimension of this texture. If you use GPUTextureViewDimension, we lookup using Dimension[.dimension]
 
@@ -36,7 +36,7 @@ The dimension of this texture. If you use GPUTextureViewDimension, we lookup usi
 
 > **format**: `GPUTextureFormat`
 
-Defined in: [packages/core/src/texture/index.ts:173](https://github.com/Kryft-Studios/cosmotic/blob/3e05f8ea027f62c70c59d2ca079af97bd05faf32/packages/core/src/texture/index.ts#L173)
+Defined in: [packages/core/src/texture/index.ts:365](https://github.com/Kryft-Studios/cosmotic/blob/14e0ed802e718c481be501f8a48ba990ba4c03ef/packages/core/src/texture/index.ts#L365)
 
 What the data format for this texture is.
 
@@ -46,7 +46,7 @@ What the data format for this texture is.
 
 > `optional` **label?**: `string`
 
-Defined in: [packages/core/src/texture/index.ts:182](https://github.com/Kryft-Studios/cosmotic/blob/3e05f8ea027f62c70c59d2ca079af97bd05faf32/packages/core/src/texture/index.ts#L182)
+Defined in: [packages/core/src/texture/index.ts:374](https://github.com/Kryft-Studios/cosmotic/blob/14e0ed802e718c481be501f8a48ba990ba4c03ef/packages/core/src/texture/index.ts#L374)
 
 The label of this texture
 
@@ -56,7 +56,7 @@ The label of this texture
 
 > **layers**: `object`
 
-Defined in: [packages/core/src/texture/index.ts:177](https://github.com/Kryft-Studios/cosmotic/blob/3e05f8ea027f62c70c59d2ca079af97bd05faf32/packages/core/src/texture/index.ts#L177)
+Defined in: [packages/core/src/texture/index.ts:369](https://github.com/Kryft-Studios/cosmotic/blob/14e0ed802e718c481be501f8a48ba990ba4c03ef/packages/core/src/texture/index.ts#L369)
 
 Layer config for this texture. Base is configured individually in view descriptor or in defaultViewConfig
 
@@ -70,7 +70,7 @@ Layer config for this texture. Base is configured individually in view descripto
 
 > `optional` **mipLevel?**: `object`
 
-Defined in: [packages/core/src/texture/index.ts:184](https://github.com/Kryft-Studios/cosmotic/blob/3e05f8ea027f62c70c59d2ca079af97bd05faf32/packages/core/src/texture/index.ts#L184)
+Defined in: [packages/core/src/texture/index.ts:376](https://github.com/Kryft-Studios/cosmotic/blob/14e0ed802e718c481be501f8a48ba990ba4c03ef/packages/core/src/texture/index.ts#L376)
 
 mip level config for this texture
 
@@ -104,7 +104,7 @@ For a texture of size 256×256:
 
 > `optional` **sampleCount?**: [`SampleCount`](../enumerations/SampleCount.md)
 
-Defined in: [packages/core/src/texture/index.ts:209](https://github.com/Kryft-Studios/cosmotic/blob/3e05f8ea027f62c70c59d2ca079af97bd05faf32/packages/core/src/texture/index.ts#L209)
+Defined in: [packages/core/src/texture/index.ts:401](https://github.com/Kryft-Studios/cosmotic/blob/14e0ed802e718c481be501f8a48ba990ba4c03ef/packages/core/src/texture/index.ts#L401)
 
 **MSAA Sample Count**.
 
@@ -114,7 +114,7 @@ Defined in: [packages/core/src/texture/index.ts:209](https://github.com/Kryft-St
 
 > **size**: `GPUExtent3D`
 
-Defined in: [packages/core/src/texture/index.ts:211](https://github.com/Kryft-Studios/cosmotic/blob/3e05f8ea027f62c70c59d2ca079af97bd05faf32/packages/core/src/texture/index.ts#L211)
+Defined in: [packages/core/src/texture/index.ts:403](https://github.com/Kryft-Studios/cosmotic/blob/14e0ed802e718c481be501f8a48ba990ba4c03ef/packages/core/src/texture/index.ts#L403)
 
 size of this texture
 
@@ -124,6 +124,6 @@ size of this texture
 
 > **usage**: `number`
 
-Defined in: [packages/core/src/texture/index.ts:175](https://github.com/Kryft-Studios/cosmotic/blob/3e05f8ea027f62c70c59d2ca079af97bd05faf32/packages/core/src/texture/index.ts#L175)
+Defined in: [packages/core/src/texture/index.ts:367](https://github.com/Kryft-Studios/cosmotic/blob/14e0ed802e718c481be501f8a48ba990ba4c03ef/packages/core/src/texture/index.ts#L367)
 
 What the usage of this texture is.

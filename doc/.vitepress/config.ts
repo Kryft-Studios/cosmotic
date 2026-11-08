@@ -103,6 +103,7 @@ export default /*withPwa*/(defineConfig({
       }),
 
       GitChangelog({
+        
         repoURL: () => "https://github.com/Kryft-Studios/cosmotic",
       }),
 

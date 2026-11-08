@@ -41,6 +41,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Typedoc
+        run: pnpm exec typedoc
       - name: Build VitePress documentation
         run: pnpm exec vitepress build doc
 

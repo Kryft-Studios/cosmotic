@@ -23,5 +23,32 @@
     "collapsed": true,
     "pretty": true
   },
-  "excludeExternals": false
+  "excludeExternals": false,
+  "indexFormat": "table",
+
+  "parametersFormat": "table",
+  "interfacePropertiesFormat": "table",
+  "classPropertiesFormat": "table",
+  "typeAliasPropertiesFormat": "table",
+  "enumMembersFormat": "table",
+  "propertyMembersFormat": "table",
+  "typeDeclarationFormat": "list",
+
+  "typeDeclarationVisibility": "verbose",
+
+  "expandParameters": true,
+  "expandObjects": true,
+  "useCodeBlocks": true,
+
+  "formatWithPrettier": true,
+
+  "tableColumnSettings": {
+    "hideDefaults": false,
+    "hideInherited": true,
+    "hideModifiers": false,
+    "hideOverrides": false,
+    "hideSources": true,
+    "hideValues": false,
+    "leftAlignHeaders": true
+  }
 }

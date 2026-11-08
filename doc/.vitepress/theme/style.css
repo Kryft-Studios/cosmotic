@@ -375,3 +375,5 @@ html.is-wheel-gliding .VPSidebar {
 }
 
 
+.mdui-prose ul {padding: 10px}
+.mdui-prose ul>li::marker {display: none !important; opacity: 0 !important; color: transparent !important}

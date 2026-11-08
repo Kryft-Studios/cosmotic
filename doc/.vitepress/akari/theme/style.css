@@ -1,0 +1,41 @@
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(var(--mdui-color-on-surface-variant)) rgba(var(--mdui-color-background), 0);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Noto Sans SC', sans-serif;
+  opacity: 0;
+  margin-inline-end: 0px !important;
+  -webkit-tap-highlight-color: rgba(var(--mdui-color-primary), 0.24);
+}
+
+body.ready {
+  opacity: 1;
+  transition: 0.25s opacity;
+}
+
+:not(:defined) {
+  visibility: hidden;
+}
+
+img[lazy=loading] {
+  opacity: 0;
+}
+
+img {
+  height: auto;
+}
+
+div>ul {
+  background-color: rgba(var(--mdui-color-surface-container-high), 0.8);
+  border-radius: var(--mdui-shape-corner-medium);
+  box-shadow: var(--mdui-elevation-level1);
+}
+
+body::selection {
+  background-color: rgba(var(--mdui-color-primary), 0.24);
+  color: rgb(var(--mdui-color-on-surface));
+}

@@ -3,13 +3,15 @@ import { defineConfig } from "vitepress";
 import { Dirent, existsSync, readFileSync, readdirSync } from "fs";
 import { join, relative, resolve } from "path";
 import llms from "vitepress-plugin-llms";
+import akariConfig from "./akari/config";
 const apiDir = "./doc/api";
-import {withPwa} from "@vite-pwa/vitepress"
+const generated = await import("../api/typedoc-sidebar.json")
+import { withPwa } from "@vite-pwa/vitepress";
 import {
   GitChangelog,
   GitChangelogMarkdownSection,
 } from "@nolebase/vitepress-plugin-git-changelog/vite";
-import {generateBreadcrumbsData} from "@nolebase/vitepress-plugin-breadcrumbs/vitepress"
+import { generateBreadcrumbsData } from "@nolebase/vitepress-plugin-breadcrumbs/vitepress";
 
 function getDefinedInSourcePath(markdown: string) {
   const definedIn = markdown.match(/^\s*Defined in:\s+\[([^\]]+)\]/m);
@@ -67,7 +69,8 @@ const a = new Set([
   "variables",
   "functions",
   "constants",
-  "interfaces", "enumerations"
+  "interfaces",
+  "enumerations",
 ]);
 
 function generateSidebar(dir: string, base = "", topLevel = true) {
@@ -86,24 +89,24 @@ function generateSidebar(dir: string, base = "", topLevel = true) {
         const text = a.has(name) || topLevel ? titleCase(name) : name;
 
         const childReadme =
-          existsSync(join(fullPath, "README.md")) ||
-          existsSync(join(fullPath, "readme.md"));
+          existsSync(join(fullPath, "index.md")) ||
+          existsSync(join(fullPath, "index.md"));
 
         return {
           text,
           collapsed: true,
           ...(childReadme
-            ? { link: joinUrl("/api", joinUrl(base, entry.name)) + "/README" }
+            ? { link: joinUrl("/cosmotic/api", joinUrl(base, entry.name)) }
             : {}),
           items: generateSidebar(fullPath, joinUrl(base, entry.name), false),
         };
       }
 
-      if (entry.name.toLowerCase() === "readme.md") {
+      if (entry.name.toLowerCase() === "index.md") {
         if (topLevel) {
           return {
             text: "Main",
-            link: "/api/README",
+            link: "/cosmotic/api",
           };
         }
 
@@ -113,7 +116,7 @@ function generateSidebar(dir: string, base = "", topLevel = true) {
       if (entry.name.endsWith(".md")) {
         return {
           text: a.has(name) || topLevel ? titleCase(name) : name,
-          link: joinUrl("/api", joinUrl(base, name)),
+          link: joinUrl("/cosmotic/api", joinUrl(base, name)),
         };
       }
 
@@ -123,11 +126,39 @@ function generateSidebar(dir: string, base = "", topLevel = true) {
 }
 // https://vitepress.dev/reference/site-config
 
-export default /*withPwa*/(defineConfig({
+export default /*withPwa*/ defineConfig({
   title: "Cosmotic API",
+  lang: "en-US",
   base: "/cosmotic/",
+  appearance: false,
+  cleanUrls: false,
+
+  vue: {
+    template: {
+      compilerOptions: {
+        isCustomElement: (tag: string) => tag.startsWith("mdui-"),
+      },
+    },
+  },
 
   vite: {
+    resolve: {
+      alias: [
+        // Akari MDUI imports icons from @mdui/shared, but publishes them in @mdui/icons.
+        {
+          find: /^@mdui\/shared\/icons\/(.*)$/,
+          replacement: `${resolve("node_modules/@mdui/icons")}/$1`,
+        },
+        {
+          find: "@vitepress-theme-akari/config",
+          replacement: resolve("doc/.vitepress/akari/config.ts"),
+        },
+        {
+          find: "@vitepress-theme-akari",
+          replacement: resolve("doc/.vitepress/akari"),
+        },
+      ],
+    },
     plugins: [
       llms({
         generateLLMsTxt: true,
@@ -139,51 +170,30 @@ export default /*withPwa*/(defineConfig({
         title: "Cosmotic API",
         injectLLMHint: true,
       }),
-
-      GitChangelog({
-        include: ["packages/core/src/**/*.ts"],
-        rewritePathsBy: {
-          handler: (commit, path) => {
-            const pagePaths = apiPagesBySource.get(path.replace(/\\/g, "/")) ?? [];
-            // GitChangelog currently ignores the handler's return value.
-            for (const pagePath of pagePaths) {
-              if (!commit.paths.includes(pagePath)) commit.paths.push(pagePath);
-            }
-            return path;
-          },
-        },
-        repoURL: () => "https://github.com/Kryft-Studios/cosmotic",
-      }),
-
-      GitChangelogMarkdownSection({
-        exclude: (id) => {
-          const markdownPath = id.split("?")[0];
-          return !getDefinedInSourcePath(readFileSync(markdownPath, "utf8"));
-        },
-      }),
-
     ],
     optimizeDeps: {
-        exclude: [
-          "@nolebase/vitepress-plugin-breadcrumbs/client",
-          "@nolebase/vitepress-plugin-enhanced-readabilities/client",
-          "@nolebase/vitepress-plugin-inline-link-preview/client",
-          "vitepress",
-          "@nolebase/ui",
-        ],
-      },
+      exclude: [
+        "@nolebase/vitepress-plugin-breadcrumbs/client",
+        "@nolebase/vitepress-plugin-enhanced-readabilities/client",
+        "@nolebase/vitepress-plugin-inline-link-preview/client",
+        "vitepress",
+        "@nolebase/ui",
+      ],
+    },
 
-      ssr: {
-        noExternal: [
-          "@nolebase/vitepress-plugin-breadcrumbs",
-          "@nolebase/vitepress-plugin-enhanced-readabilities",
-          "@nolebase/vitepress-plugin-inline-link-preview",
-          "@nolebase/ui",
-        ],
-      },
+    ssr: {
+      noExternal: [
+        "@oasisakari/mdui",
+        "@mdui/shared",
+        "@nolebase/vitepress-plugin-breadcrumbs",
+        "@nolebase/vitepress-plugin-enhanced-readabilities",
+        "@nolebase/vitepress-plugin-inline-link-preview",
+        "@nolebase/ui",
+      ],
+    },
   },
   transformPageData(pageData, ctx) {
-      generateBreadcrumbsData(pageData, ctx)
+    generateBreadcrumbsData(pageData, ctx);
   },
   // @ts-ignore PWA is added by @vite-pwa/vitepress
   pwa: {
@@ -198,7 +208,6 @@ export default /*withPwa*/(defineConfig({
       display: "standalone",
       theme_color: "#ff7a00",
       background_color: "#111111",
-
     },
   },
 
@@ -210,58 +219,111 @@ export default /*withPwa*/(defineConfig({
     "Cosmotic is an easy-to-use and easy-to-adapt WebGPU abstraction. It aims to give you full control over your WebGPU device while providing high-level abstractions.",
 
   outDir: "../docs",
-head: [
-  [ "link", {rel: "icon", "type": "image/png","href": "/cosmotic-logo.png"}],
-  ['meta', {
-      property: 'og:type',
-      content: 'website',
-    }],
-    ['meta', {
-      property: 'og:site_name',
-      content: 'Cosmotic',
-    }],
-    ['meta', {
-      property: 'og:title',
-      content: 'Cosmotic | Modularity is Priority',
-    }],
-    ['meta', {
-      property: 'og:description',
-      content: 'A high and low level graphics API. Experience modularity in 3D graphics programming.',
-    }],
-    ['meta', {
-      property: 'og:url',
-      content: 'https://kryft-studios.github.io/cosmotic/',
-    }],
-    ['meta', {
-      property: 'og:image',
-      content: 'https://kryft-studios.github.io/cosmotic/cosmotic-banner.png',
-    }],
-    ['meta', {
-      property: 'og:image:width',
-      content: '1200',
-    }],
-    ['meta', {
-      property: 'og:image:height',
-      content: '630',
-    }],
+  head: [
+    ["link", { rel: "icon", type: "image/png", href: "/cosmotic-logo.png" }],
+    [
+      "meta",
+      {
+        property: "og:type",
+        content: "website",
+      },
+    ],
+    [
+      "meta",
+      {
+        property: "og:site_name",
+        content: "Cosmotic",
+      },
+    ],
+    [
+      "meta",
+      {
+        property: "og:title",
+        content: "Cosmotic | Modularity is Priority",
+      },
+    ],
+    [
+      "meta",
+      {
+        property: "og:description",
+        content:
+          "A high and low level graphics API. Experience modularity in 3D graphics programming.",
+      },
+    ],
+    [
+      "meta",
+      {
+        property: "og:url",
+        content: "https://kryft-studios.github.io/cosmotic/",
+      },
+    ],
+    [
+      "meta",
+      {
+        property: "og:image",
+        content: "https://kryft-studios.github.io/cosmotic/cosmotic-banner.png",
+      },
+    ],
+    [
+      "meta",
+      {
+        property: "og:image:width",
+        content: "1200",
+      },
+    ],
+    [
+      "meta",
+      {
+        property: "og:image:height",
+        content: "630",
+      },
+    ],
 
     // Twitter / X
-    ['meta', {
-      name: 'twitter:card',
-      content: 'summary_large_image',
-    }],
-    ['meta', {
-      name: 'twitter:title',
-      content: 'Cosmotic | Modularity is Priority',
-    }],
-    ['meta', {
-      name: 'twitter:description',
-      content: 'A high and low level graphics API. Experience modularity in 3D graphics programming.',
-    }],
-    ['meta', {
-      name: 'twitter:image',
-      content: 'https://kryft-studios.github.io/cosmotic/cosmotic-banner.png',
-    }],],  themeConfig: {
+    [
+      "meta",
+      {
+        name: "twitter:card",
+        content: "summary_large_image",
+      },
+    ],
+    [
+      'link',
+      { 'rel': 'preconnect', 'href': 'https://fonts.googleapis.com' }
+    ],
+    [
+      'link',
+      { 'rel': 'preconnect', 'href': 'https://fonts.gstatic.com', 'crossorigin': '' }
+    ],
+    [
+      'link',
+      { href: 'https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400..600&display=swap', rel: 'stylesheet' }
+    ],
+    [
+      "meta",
+      {
+        name: "twitter:title",
+        content: "Cosmotic | Modularity is Priority",
+      },
+    ],
+    [
+      "meta",
+      {
+        name: "twitter:description",
+        content:
+          "A high and low level graphics API. Experience modularity in 3D graphics programming.",
+      },
+    ],
+    [
+      "meta",
+      {
+        name: "twitter:image",
+        content: "https://kryft-studios.github.io/cosmotic/cosmotic-banner.png",
+      },
+    ],
+  ],
+  themeConfig: {
+    ...akariConfig.themeConfig,
     siteTitle: "Cosmotic",
     logo: "/cosmotic-logo.png",
     lastUpdated: {
@@ -280,13 +342,11 @@ head: [
     },
 
     nav: [
-      { text: "Home", link: "/" },
-      { text: "API Reference", link: "/api/README.md" },
+      { text: "Home", link: "index.md" },
+      { text: "API Reference", link: "api/index.md" },
     ],
 
-    sidebar: [
-      { text: "API Reference", items: generateSidebar(apiDir) },
-    ],
+    sidebar: [{ text: "API Reference", items: generateSidebar(apiDir) }],
 
     socialLinks: [
       {
@@ -299,4 +359,4 @@ head: [
       },
     ],
   },
-}));
+});

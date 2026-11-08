@@ -1,5 +1,9 @@
 ---
 layout: home
+cover_image: /cosmotic-banner.png
+cover_image_dark: /cosmotic-banner.png
+color: "#ff7a00"
+color_dark: "#ff7a00"
 
 hero:
   name: "Cosmotic API"
@@ -13,7 +17,7 @@ hero:
   actions:
     - theme: alt
       text: API Reference
-      link: /api/README.md
+      link: /api/index.md
 
 features:
   - title: Direct & Indirect

@@ -47,6 +47,7 @@
   "dependencies": {
     "@cosmos-js/core": "^0.1.15",
     "@cosmos-js/wgpu-texture-registry": "^0.1.1",
+    "eventemitter3": "^5.0.4",
     "wgpu-matrix": "^3.4.2"
   }
 }

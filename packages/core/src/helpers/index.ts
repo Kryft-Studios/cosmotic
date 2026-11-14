@@ -11,4 +11,5 @@
  */
 import { deepClone } from "./deepClone";
 import { deepRest } from "./deepRest";
-export { deepClone, deepRest };
+import StagingBuffer from "./stagingBuffers";
+export { deepClone, deepRest, StagingBuffer };

@@ -165,6 +165,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      eventemitter3:
+        specifier: ^5.0.4
+        version: 5.0.4
     devDependencies:
       '@webgpu/types':
         specifier: ^0.1.74
@@ -298,6 +302,9 @@ packages:
   '@webgpu/types@0.1.74':
     resolution: {integrity: sha512-lgiI4hbuLcI9unnm2cL/tvCaQU45dp0xcLWJh5uB/9MBGvIA4F8XIk7nSiBeg+K4xWGYwgZKn80LmERI5CxoTA==}
 
+  eventemitter3@5.0.4:
+    resolution: {integrity: sha512-mlsTRyGaPBjPedk6Bvw+aqbsXDtoAyAzm5MO7JgU+yVRyMQ5O8bD4Kcci7BS85f93veegeCPkL8R4GLClnjLFw==}
+
   typescript@7.0.2:
     resolution: {integrity: sha512-8FYau96o3NKOhbjKi/qNvG/W5jhzxkbdm5sj9AbZ/5T5sWqn3hJgLfGx27sRKZWTvyzCP8dLRBTf5tBTSRVUNA==}
     engines: {node: '>=16.20.0'}
@@ -366,6 +373,8 @@ snapshots:
     optional: true
 
   '@webgpu/types@0.1.74': {}
+
+  eventemitter3@5.0.4: {}
 
   typescript@7.0.2:
     optionalDependencies:

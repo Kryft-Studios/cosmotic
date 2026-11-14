@@ -29,10 +29,6 @@
   ],
   "packageManager": "pnpm@12.18.0",
   "readme": "README.md",
-  "devDependencies": {
-    "@webgpu/types": "^0.1.74",
-    "typescript": "^7.0.2"
-  },
   "exports": {
     ".": "./index.js",
     "./texture": "./dist/texture/index.js",
@@ -41,5 +37,8 @@
   "scripts": {
     "prepublishOnly": "node ../../prepublish.js e",
     "prepub": "node ../../prepublish.js e"
+  },
+  "dependencies": {
+    "eventemitter3": "^5.0.4"
   }
 }

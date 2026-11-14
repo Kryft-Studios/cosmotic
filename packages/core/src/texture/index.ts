@@ -14,7 +14,6 @@ const D2DRegistry = D2D.D2DRegistry;
 import { deepClone, deepRest, StagingBuffer } from "../helpers";
 import { Vec3, vec3 } from "wgpu-matrix";
 import EventEmitter from "eventemitter3";
-
 /** A abstraction for webgpu textures and texture views */
 export class Texture {
   events = new Texture.Events();
@@ -34,6 +33,7 @@ export class Texture {
       | Texture.ib_wrap_options
       | Texture.externalimage_wrap_options,
   ) {
+    
     let owned = true;
     let des!: Texture.descriptor;
     let wrappedUpload: (() => void) | undefined;
@@ -95,12 +95,15 @@ export class Texture {
       };
       des = mockDescriptor;
       this.size = mockDescriptor.size as [number, number, number];
-      this.label = mockDescriptor.label;
+      this.width = this.size[0];
+      this.height = this.size[1]
+      this.depth = this.size[2];
+      this.label = mockDescriptor.label ?? "Texture";
       this.format = mockDescriptor.format;
-      this.dimension = mockDescriptor.dimension;
+      this.dimension = Texture.z_normaliseDimension(mockDescriptor.dimension ?? "2d");
       this.layersCount = mockDescriptor.layers.count;
-      this.sampleCount = mockDescriptor.sampleCount;
-      this.mipLevelCount = mockDescriptor.mipLevel?.count;
+      this.sampleCount = mockDescriptor.sampleCount ?? 1;
+      this.mipLevelCount = mockDescriptor.mipLevel?.count ?? 1;
       this.usage = mockDescriptor.usage;
       if (desc.recreate || desc.recreate === undefined) {
         this.z_gpuTexture = z_device.createTexture({
@@ -347,6 +350,9 @@ export class Texture {
       );
       let actualSize = [...convertRes];
       this.size = Object.freeze(actualSize) as [number, number, number];
+      this.width = this.size[0];
+      this.height = this.size[1]
+      this.depth = this.size[2];
       if (this.size[2] <= 0)
         throw new Error("Depth/LayerCount cannot be 0 or below!!");
 
@@ -372,11 +378,11 @@ export class Texture {
         layerCount = descriptor.layers.count = this.size[2];
       }
 
-      this.label = descriptor.label;
+      this.label = descriptor.label ?? "Texture";
       this.format = descriptor.format;
-      this.dimension = descriptor.dimension;
+      this.dimension = Texture.z_normaliseDimension(descriptor.dimension ?? "2d");
       this.layersCount = descriptor.layers.count;
-      this.sampleCount = descriptor.sampleCount;
+      this.sampleCount = descriptor.sampleCount ?? 1;
 
       const maxMipLevelCount =
         Math.floor(Math.log2(Math.max(...this.size))) + 1;
@@ -390,7 +396,7 @@ export class Texture {
           "Mip level count exceeds maximum for texture dimensions!",
         );
       }
-      this.mipLevelCount = descriptor.mipLevel?.count;
+      this.mipLevelCount = descriptor.mipLevel?.count ?? 1;
       if (descriptor.usage === undefined) {
         descriptor.usage =
           GPUTextureUsage.COPY_DST | GPUTextureUsage.RENDER_ATTACHMENT;
@@ -458,28 +464,31 @@ export class Texture {
     );
     if (wrappedUpload) wrappedUpload();
   }
-  byteLength;
+  readonly byteLength;
   destroyed;
 
   /** i swear if u touch this and delete it and everything crashes DONT. BLAME. ME. */
   readonly z_gpuTexture;
   readonly z_dvc;
-  usage;
+  readonly usage;
   /** Size of this texture */
-  size;
+  readonly size;
+  readonly width;
+  readonly height;
+  readonly depth;
   /** array layer count of this texture */
-  layersCount;
+  readonly layersCount;
   /** MSAA sample count */
-  sampleCount;
+  readonly sampleCount;
   /** Mip level count */
-  mipLevelCount;
-  mipSize;
+  readonly mipLevelCount;
+  readonly mipSize;
   /** dimension of this texture. */
-  dimension;
+  readonly dimension;
   /** format of this texture */
-  format;
+  readonly format;
   /** label of this texture */
-  label;
+  readonly label;
   /** creates a view from the given view descriptor, merged with the default view descriptor
    *
    * if no merge is true, it wont merge with default
@@ -500,6 +509,7 @@ export class Texture {
   view(cfg?: Texture.view_descriptor, noMerge: boolean = false) {
     return Texture.view(this, cfg, noMerge);
   }
+  createView = this.view
   static getGPUTexture(t: Texture | GPUTexture) {
     return "z_gpuTexture" in t ? t.z_gpuTexture : t;
   }
@@ -723,8 +733,8 @@ device.createCommandEncoder()
 
     const rawTexture = this.getGPUTexture(texture);
 
-    const mipLevelCount = rawTexture.mipLevelCount;
-    const dimension = rawTexture.dimension;
+    const mipLevelCount = rawTexture.mipLevelCount ?? 1;
+    const dimension = this.z_normaliseDimension(rawTexture.dimension ?? "2d");
 
     if (
       !Number.isInteger(mipLevel) ||
@@ -1079,43 +1089,85 @@ export namespace Texture {
     origin?: GPUExtent3DStrict;
   }
   export class View {
+    public readonly z_parentTexture: GPUTexture;
+    public readonly z_tv: GPUTextureView;
+  
+    /** Dimension of the texture view. */
+    public readonly dimension: GPUTextureViewDimension;
+  
+    /** Format of the texture view. */
+    public readonly format: GPUTextureFormat;
+  
+    /** Usage flags of the texture view. */
+    public readonly usage: GPUTextureUsageFlags;
+  
+    /** Aspect of the texture view. */
+    public readonly aspect: GPUTextureAspect;
+  
+    /** Label of the texture view. */
+    public readonly label: string;
+  
+    /** Texture swizzle configuration. */
+    public readonly swizzle?: Texture.swizzle;
+  
+    /** First mip level accessible by this view. */
+    public readonly mipLevelBase: number;
+  
+    /** Number of mip levels accessible by this view. */
+    public readonly mipLevelCount: number;
+  
+    /** First array layer accessible by this view. */
+    public readonly layersBase: number;
+  
+    /** Number of array layers accessible by this view. */
+    public readonly arrayLayerCount: number;
+  
     constructor(
-      public readonly z_parentTexture: GPUTexture,
-      viewDesc: Texture.view_descriptor,
+      parentTexture: GPUTexture,
+      viewDesc: Texture.view_descriptor = {},
     ) {
-      this.aspect = viewDesc.aspect;
-      this.label = viewDesc.label;
+      this.z_parentTexture = parentTexture;
+  
+      this.dimension =
+        Texture.z_normaliseDimension(parentTexture.dimension);
+  
+      this.format =  parentTexture.format;
+      this.usage = parentTexture.usage;
+      this.aspect = viewDesc.aspect ?? "all";
+  
+      this.label =
+        viewDesc.label ??
+        parentTexture.label ??
+        "View";
+  
       this.swizzle = viewDesc.swizzle;
-      this.mipLevelBase = viewDesc.mipLevel?.base;
-      this.layersBase = viewDesc.layers?.base;
-      this.z_tv = z_parentTexture.createView({
-        dimension: Texture.z_normaliseDimension(z_parentTexture.dimension),
-        aspect: viewDesc.aspect,
-        baseArrayLayer: this.layersBase,
+  
+      this.mipLevelBase = viewDesc.mipLevel?.base ?? 0;
+      this.layersBase = viewDesc.layers?.base ?? 0;
+  
+      this.mipLevelCount =
+        parentTexture.mipLevelCount - this.mipLevelBase;
+  
+      this.arrayLayerCount =
+        parentTexture.depthOrArrayLayers - this.layersBase;
+  
+      this.z_tv = parentTexture.createView({
+        label: this.label,
+        dimension: this.dimension,
+        format: this.format,
+        usage: this.usage,
+        aspect: this.aspect,
         baseMipLevel: this.mipLevelBase,
-        format: z_parentTexture.format,
-        usage: z_parentTexture.usage,
-        swizzle: this.swizzle,
-        arrayLayerCount: z_parentTexture.depthOrArrayLayers
-          ? z_parentTexture.depthOrArrayLayers - (this.layersBase ?? 0)
-          : undefined,
-        mipLevelCount: z_parentTexture.mipLevelCount
-          ? z_parentTexture.mipLevelCount - (this.mipLevelBase ?? 0)
-          : undefined,
-        label: this.label ?? z_parentTexture.label,
+        mipLevelCount: this.mipLevelCount,
+        baseArrayLayer: this.layersBase,
+        arrayLayerCount: this.arrayLayerCount,
       });
     }
-    public readonly z_tv;
-    /** Aspect of the texture view. */
-    aspect;
-    /** The label of this texture view */
-    label;
-    /** Swizzle of this texture view. */
-    swizzle;
-    /** Mip level base, being the index of the most detailed texture */
-    mipLevelBase;
-    /** Layers base.  */
-    layersBase;
+  
+    /** Native GPUTextureView instance. */
+    get native(): GPUTextureView {
+      return this.z_tv;
+    }
   }
   /** performance abstraction of {@link GPUTextureViewDimension} */
   export enum Dimension {
